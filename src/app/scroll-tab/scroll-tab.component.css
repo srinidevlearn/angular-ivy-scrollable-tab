@@ -13,6 +13,7 @@
     /* overflow-x: auto; */
 
     scroll-behavior: smooth;
+
 }
 .my-tabs:hover{
     overflow-x: auto;
@@ -40,6 +41,7 @@
     cursor:pointer;
     position: relative;
     left: 1px;
+ 
 }
 
 .tab [type=radio] {
