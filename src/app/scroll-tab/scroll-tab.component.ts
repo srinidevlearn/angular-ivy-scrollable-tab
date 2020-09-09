@@ -1,4 +1,12 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  Input,
+  Output,
+  EventEmitter
+} from "@angular/core";
 
 @Component({
   selector: "app-scroll-tab",
@@ -9,19 +17,39 @@ export class ScrollTabComponent implements OnInit {
   _showScrollActionButton = true;
   xPos = 0;
   yPos = 0;
-  _tabData = Array(6)
-    .fill(0)
-    .map((itm, i) => {
-      return {
-        header: `Tab heading ${i + 1}`
-      };
-    });
-  private _scrollPos = 50;
-  private _scrollContainer: any;
+
+  _tabData: any;
+  get tabData(): any {
+    return this._tabData;
+  }
+  @Input() set tabData(value: any) {
+    if (Array.isArray(value)) {
+      this._tabData = value;
+      if (this.validateTabData(value) == false) {
+        this._tabData = [];
+        throw new Error("Invalid tabdata format");
+      }
+    }
+  }
+
+  _scrollPos: number = 145;
+  get scrollPos(): number {
+    return this._scrollPos;
+  }
+  @Input() set scrollPos(value: number) {
+    this._scrollPos = value;
+  }
+
+  _scrollContainer: any;
+
   showContextMenu: boolean = false;
-  tab_index=0;
+  tab_index = 0;
+
+  @Output() selectedTabData = new EventEmitter();
 
   constructor() {}
+  @ViewChild("tabContents", { read: ElementRef })
+  public tabContents: ElementRef<any>;
 
   ngOnInit() {
     this._scrollContainer = document.getElementById("scrollContainer");
@@ -36,6 +64,9 @@ export class ScrollTabComponent implements OnInit {
 
   exitContextMenu() {
     this.showContextMenu = false;
+  }
+  selectedTab(i: number) {
+    this.selectedTabData.emit(this._tabData[i]);
   }
 
   myContextMenu(evt) {
@@ -54,20 +85,18 @@ export class ScrollTabComponent implements OnInit {
   }
 
   scrollRight() {
-    // (document.getElementById("scrollContainer").scrollLeft += Math.abs(
-    //   this._scrollPos
-    // ));
-    this.tab_index = this.tab_index+1;
-    let ele = `tab-${this.tab_index}`;
-    document.getElementById(ele).scrollIntoView();
-
-    // this._scrollContainer.scrollLeft += Math.abs(this._scrollPos);
+    this.tabContents.nativeElement.scrollTo({
+      left: this.tabContents.nativeElement.scrollLeft + this._scrollPos,
+      behavior: "smooth"
+    });
   }
 
   scrollLeft() {
-    this.tab_index = this.tab_index-1;
-    let ele = `tab-${this.tab_index}`;
-    document.getElementById(ele).scrollIntoView();
+    this.tabContents.nativeElement.scrollTo({
+      left: this.tabContents.nativeElement.scrollLeft - this._scrollPos,
+      behavior: "smooth"
+    });
+
     // this._scrollContainer.scrollLeft += -Math.abs(this._scrollPos);
   }
 
@@ -84,6 +113,16 @@ export class ScrollTabComponent implements OnInit {
     return res;
   }
 
+  validateTabData(val) {
+    let valid = true;
 
-  
+    for (let i = 0; i < val.length; i++) {
+      let item = val[i];
+      if (!("header" in item)) {
+        valid = false;
+        break;
+      }
+    }
+    return valid;
+  }
 }

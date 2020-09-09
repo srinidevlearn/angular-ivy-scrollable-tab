@@ -5,11 +5,13 @@
 <div>
 	<div class="flex-container">
 		<div *ngIf="_showScrollActionButton" (click)="scrollLeft();"><i class="fa fa-chevron-left nav-ic"></i></div>
-		<div class="my-tabs unselectable" id="scrollContainer">
+		<div #tabContents  class="my-tabs unselectable" id="scrollContainer">
 			<ng-container *ngFor="let item of _tabData;let i = index;">
 				<div class="tab">
-					<input name="tab-group-1" id="tab-{{i}}" type="radio"/>
+          
+					<input name="tab-group-1" id="tab-{{i}}"  (click)="selectedTab(i);" type="radio"/>
 					<label for="tab-{{i}}" (contextmenu)="myContextMenu($event);">
+            
       <span>{{item.header}}
         <i class="fa fa-times-circle close-ic" aria-hidden="true" (click)="removeData(i)"></i>
         </span></label>
