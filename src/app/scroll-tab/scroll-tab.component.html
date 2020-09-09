@@ -23,8 +23,8 @@
 <ul class="menu" [style.left.px]="xPos" [style.top.px]="yPos"
 >
 	
-		<li>Close All</li>
-		<li>Exit</li>
+		<li (click)="closeAllTabs()">Close All</li>
+		<li (click)="exitContextMenu()">Exit</li>
 
 </ul>
 </ng-container>

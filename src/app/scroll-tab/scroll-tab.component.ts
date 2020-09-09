@@ -25,15 +25,14 @@ export class ScrollTabComponent implements OnInit {
 
   ngOnInit() {
     this._scrollContainer = document.getElementById('scrollContainer');
-    // setTimeout(()=>{
-
-    // this._showScrollActionButton = this.checkScrollBar(this._scrollContainer,'horizontal');
-    // },2000)
-    
   }
 
-closeAllContextMenu(){
+closeAllTabs(){
   this._tabData =[];
+  setTimeout(()=>{
+  this.showContextMenu = false;
+  },500)
+
 
 }
 
