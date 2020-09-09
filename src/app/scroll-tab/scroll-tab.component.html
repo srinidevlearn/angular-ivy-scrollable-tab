@@ -1,0 +1,12 @@
+
+<div class="my-tabs">
+  <ng-container *ngFor="let item of _tabData;let i = index;">
+    <div class="tab">
+    <input name="tab-group-1" id="tab-{{i}}" type="radio"/>
+    <label for="tab-{{i}}">
+      <span>{{item.header}}
+        <i class="fa fa-times-circle close-ic" aria-hidden="true" (click)="removeData(i)"></i>
+        </span></label>
+    </div>
+  </ng-container>   
+</div>

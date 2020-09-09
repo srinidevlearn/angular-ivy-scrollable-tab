@@ -1,0 +1,90 @@
+.my-tabs {
+    position: relative;   
+    clear: both;
+    margin: 0;
+    /* padding-top: 15px; */
+    height: 42px;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-x: auto;
+
+    scroll-behavior: smooth;
+}
+.my-tabs:hover{
+    overflow-x: auto;
+  
+}
+
+.tab {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.tab label {
+    background: #eee; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    margin-left: -1px;
+    cursor:pointer;
+    position: relative;
+    left: 1px;
+}
+
+.tab [type=radio] {
+    display: none;
+}
+
+.tab .content {
+    position: fixed;
+    white-space: normal;
+    top: 70px;
+    left: 0;
+    background: white;
+    height:100px;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    width: 266px;
+    border: 1px solid #ccc;
+ }
+
+.tab [type=radio]:checked ~ label {
+    background: white;
+    border-bottom: 1px solid white;
+    z-index: 2;
+}
+
+.tab [type=radio]:checked ~ label ~ .content {
+    z-index: 1;
+}
+
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 2px;
+    height:2px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: rgba(112, 112, 112, 0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(41, 34, 34, 0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0,0,0,0.4); 
+}
+
+.close-ic{
+font-size: 12px;
+margin-left:8px;
+}
