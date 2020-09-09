@@ -1,5 +1,6 @@
-
-<div class="my-tabs">
+<div class="flex-container">
+  <div (click)="scrollLeft();"><i class="fa fa-chevron-left nav-ic"></i></div>
+  <div class="my-tabs" id="scrollContainer">
   <ng-container *ngFor="let item of _tabData;let i = index;">
     <div class="tab">
     <input name="tab-group-1" id="tab-{{i}}" type="radio"/>
@@ -9,4 +10,6 @@
         </span></label>
     </div>
   </ng-container>   
+</div>
+ <div (click)="scrollRight();"><i class="fa fa-chevron-right nav-ic"></i></div>
 </div>

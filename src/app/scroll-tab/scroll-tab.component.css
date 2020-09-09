@@ -7,7 +7,8 @@
     white-space: nowrap;
     overflow-y: hidden;
     overflow-x: hidden;
-    overflow-x: auto;
+    box-shadow:none;
+    /* overflow-x: auto; */
 
     scroll-behavior: smooth;
 }
@@ -83,8 +84,26 @@
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(0,0,0,0.4); 
 }
-
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
 .close-ic{
 font-size: 12px;
 margin-left:8px;
+}
+
+div .nav-ic{
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  /* border:1px solid silver; */
+  padding:15px 10px;
+}
+.nav-ic{
+font-size: 12px;
+/* margin-top:18px; */
+/* width:40px; */
+cursor: pointer;
+z-index: 20;
+text-align:center;
+
 }
