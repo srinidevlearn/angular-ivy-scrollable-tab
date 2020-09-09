@@ -1,3 +1,5 @@
+
+
 .my-tabs {
     position: relative;   
     clear: both;
@@ -15,6 +17,14 @@
 .my-tabs:hover{
     overflow-x: auto;
   
+}
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .tab {
@@ -106,4 +116,23 @@ cursor: pointer;
 z-index: 20;
 text-align:center;
 
+}
+.menu{
+  border:1px solid silver;
+  position: absolute;
+  text-align:left;
+  margin:0!important;
+  width:120px;
+  padding:0px;
+  z-index:99;
+  background: white;
+}
+.menu li:hover{
+  background: #eeeeee;
+  cursor: pointer;  
+}
+.menu>li{
+  list-style: none;
+  padding:10px;
+  
 }
