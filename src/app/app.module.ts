@@ -3,14 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-
-import { ScrollTabComponent } from './scroll-tab/scroll-tab.component';
-
+import { ScrollTabModule } from './scroll-tab/scroll-tab.module';
 
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, ScrollTabComponent ],
+  imports:      [ BrowserModule, FormsModule,ScrollTabModule ],
+  declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
