@@ -11,12 +11,16 @@ scrollPos=30;
     .fill(0)
     .map((itm, i) => {
       return {
-        header: `Tab heading ${i + 1}`
+        header: `Tab heading ${i+1}`
       };
     });
   name = 'Angular ' + VERSION.major;
+  bodyContent:any={};
 
   getSelectedTabData(e:any){
-    console.log(e);
+
+    this.bodyContent = e;
+
+   
   }
 }

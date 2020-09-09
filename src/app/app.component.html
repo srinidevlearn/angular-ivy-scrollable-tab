@@ -1,1 +1,7 @@
-<app-scroll-tab [tabData]="tabData" [scrollPos]="scrollPos" (selectedTabData)="getSelectedTabData($event)"></app-scroll-tab>
+<app-scroll-tab [tabData]="tabData" [scrollPos]="scrollPos" (selectedTabData)="getSelectedTabData($event)">
+</app-scroll-tab>
+
+<div class="panel">
+	<h4>Selected heading is</h4>
+  <h2>{{bodyContent.header}}</h2>
+<div>

@@ -1,3 +1,10 @@
 p {
   font-family: Lato;
 }
+
+.panel{
+  width:100%;
+  border:1px solid silver;
+  border-top:none;
+  padding:20px
+}

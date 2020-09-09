@@ -24,10 +24,15 @@ export class ScrollTabComponent implements OnInit {
   }
   @Input() set tabData(value: any) {
     if (Array.isArray(value)) {
-      this._tabData = value;
       if (this.validateTabData(value) == false) {
         this._tabData = [];
         throw new Error("Invalid tabdata format");
+      } else {
+        this._tabData = value;
+        setTimeout(() => {
+          document.getElementById("tab-0").click();
+        }, 500);
+        // tab-{{i}}
       }
     }
   }
@@ -57,6 +62,7 @@ export class ScrollTabComponent implements OnInit {
 
   closeAllTabs() {
     this._tabData = [];
+    this.selectedTabData.emit(this._tabData);
     setTimeout(() => {
       this.showContextMenu = false;
     }, 500);
@@ -66,7 +72,10 @@ export class ScrollTabComponent implements OnInit {
     this.showContextMenu = false;
   }
   selectedTab(i: number) {
-    this.selectedTabData.emit(this._tabData[i]);
+    
+    setTimeout(() => {
+      this.selectedTabData.emit(this._tabData[i]);
+    }, 100);
   }
 
   myContextMenu(evt) {
@@ -75,13 +84,17 @@ export class ScrollTabComponent implements OnInit {
     this.yPos = evt.clientY;
     evt.preventDefault();
   }
-  removeData(index: number) {
-    let scrollContainer = this._tabData.splice(index, 1);
-    this._showScrollActionButton = this.checkScrollBar(
-      scrollContainer,
-      "horizontal"
-    );
-    console.log(this._showScrollActionButton);
+  removeData(i: number) {
+    this._tabData.splice(i, 1);
+
+    setTimeout(() => {
+      if (document.getElementById("tab-" + i) == null) {
+        this._tabData = [];
+        this.selectedTabData.emit(this._tabData);
+      } else {
+        document.getElementById("tab-" + i).click();
+      }
+    }, 100);
   }
 
   scrollRight() {
